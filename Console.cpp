@@ -1,4 +1,4 @@
-ï»¿#include <iostream>
+#include <iostream>
 #include <ctime>
 #include <fstream>
 #include <Windows.h>
@@ -37,12 +37,12 @@ int main()
 	ifstream in("input.txt");
 	HANDLE hThread;
 
-	cout << "Ð¤Ð˜Ðž: ÐÐ²ÐµÑ€ÐºÐ¸Ð½Ð° ÐÐ½Ð°ÑÑ‚Ð°ÑÐ¸Ñ ÐœÐ°ÐºÑÐ¸Ð¼Ð¾Ð²Ð½Ð°" << endl;
-	cout << "Ð“Ñ€ÑƒÐ¿Ð¿Ð°: 501" << endl;
-	cout << "Ð”Ð°Ñ‚Ð°: " << date_time->tm_mday << "." << 1 + date_time->tm_mon << "." << date_time->tm_year + 1900;
-	cout << " Ð’Ñ€ÐµÐ¼Ñ: " << date_time->tm_hour << ":" << date_time->tm_min << ":" << date_time->tm_sec << endl;
+	cout << "Êðóãëîâ Ì. À." << endl;
+	cout << "501" << endl;
+	cout << "Äàòà: " << date_time->tm_mday << "." << 1 + date_time->tm_mon << "." << date_time->tm_year + 1900;
+	cout << " Âðåìÿ: " << date_time->tm_hour << ":" << date_time->tm_min << ":" << date_time->tm_sec << endl;
 
-	cout << "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»: " << endl;
+	cout << "Èñõîäíûé ôàéë: " << endl;
 	if (in.is_open()) {
 		char ch;
 		for (int i = 0; i < 10; i++) {
@@ -58,14 +58,14 @@ int main()
 		in.close();
 	}
 	else {
-		cout << "\nÐŸÑ€Ð¾Ð¸Ð·Ð¾ÑˆÐ»Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ°! Ð¤Ð°Ð¹Ð» Ð½Ðµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ" << endl;
+		cout << "\nÏðîèçîøëà îøèáêà! Ôàéë íå óäàëîñü îòêðûòü" << endl;
 	}
-	
-	cout << "\n\nÐŸÐ¾ÑÐ»Ðµ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸: " << endl;
 
-	out = CreateFile(L"output.txt", GENERIC_READ|GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+	cout << "\n\nÏîñëå ñîðòèðîâêè: " << endl;
+
+	out = CreateFile(L"output.txt", GENERIC_READ | GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 	if (out == INVALID_HANDLE_VALUE)
-		cout << "Ð¤Ð°Ð¹Ð» Ð½Ðµ ÑÐ¾Ð·Ð´Ð°Ð½ "<< GetLastError() << endl;
+		cout << "Ôàéë íå ñîçäàí " << GetLastError() << endl;
 	hSemaphore = CreateSemaphore(NULL, 0, 10, NULL);
 	for (int i = 0; i < 10; i++) {
 		hThread = CreateThread(NULL, 0, Sort, (LPVOID)i, 0, NULL);
